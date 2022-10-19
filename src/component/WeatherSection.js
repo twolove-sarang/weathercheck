@@ -37,7 +37,7 @@ const WeatherSection = ({ weather }) => {
   return (
     <div>
       <WeatherTitle>Today Weather</WeatherTitle>
-      <WeatherName>{weather?.name}</WeatherName>
+      <WeatherName style={{textTransform : "uppercase"}}>{weather?.name}</WeatherName>
       <WeatherBigBox>
         <WeatherSmallBox>
           <FontAwesomeIcon icon={faTemperature3} />

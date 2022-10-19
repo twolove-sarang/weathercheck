@@ -5,6 +5,7 @@ import ButtonSection from "./component/ButtonSection";
 import styled from "styled-components";
 import ClipLoader from "react-spinners/ClipLoader";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
 
 //지역 정보를 가져올 수 있다.
 //내 위치의 날씨와 각 나라별 날씨를 볼 수 있다.
@@ -56,10 +57,10 @@ function App() {
     }
   };
 
-  const Container = styled.div`
+  const MainSection = styled.div`
     background-color: #f9f9f9;
     padding: 30px;
-    width: 50%;
+    // width: 50%;
   `;
 
   useEffect(() => {
@@ -79,7 +80,7 @@ function App() {
       {loading ? (
         <ClipLoader color="#909022" loading={loading} size={150} />
       ) : (
-        <div>
+        <MainSection>
           <WeatherSection weather={weather} />
           <div>Press City Button👇</div>
           <ButtonSection
@@ -88,7 +89,7 @@ function App() {
             getCurrentWeather={getCurrentWeather}
             selectedCity={city}
           />
-        </div>
+        </MainSection>
       )}
     </Container>
   );
