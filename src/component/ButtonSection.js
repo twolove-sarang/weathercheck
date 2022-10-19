@@ -1,4 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+
+
+
+const ButtonStyle = styled.button`
+  border : none;
+  border-radius : 15px;
+  padding : 10px;
+  margin : 5px;
+  font-weight : 500;
+`
 
 const ButtonSection = ({
   cities,
@@ -8,28 +19,28 @@ const ButtonSection = ({
 }) => {
   return (
     <div>
-      <button
+      <ButtonStyle
         onClick={() => getCurrentWeather("current")}
         style={{
           textTransform: "uppercase",
-          background: `${selectedCity}` == null ? "#446ff2" : "white",
+          background: `${selectedCity}` == null ? "#005995" : "white",
         }}
       >
         current
-      </button>
+      </ButtonStyle>
 
       {cities.map((item, index) => (
-        <button
+        <ButtonStyle
           onClick={() => setCity(item)}
           style={{
             textTransform: "uppercase",
-            background: `${selectedCity}` == item ? "#005995" : "909077",
+            background: `${selectedCity}` == item ? "#005995" : "white",
             color: `${selectedCity}` == item? "white":"black"
           }}
           key={index}
         >
           {item}
-        </button>
+        </ButtonStyle>
       ))}
     </div>
   );
