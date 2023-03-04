@@ -78,7 +78,7 @@ function App() {
   return (
     <Container>
       {loading ? (
-        <ClipLoader color="#909022" loading={loading} size={150} />
+        <ClipLoader color="#005995" loading={loading} size={150} />
       ) : (
         <MainSection>
           <WeatherSection weather={weather} />
