@@ -1,15 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-
-
+import React from 'react';
+import styled from 'styled-components';
 
 const ButtonStyle = styled.button`
-  border : none;
-  border-radius : 15px;
-  padding : 10px;
-  margin : 5px;
-  font-weight : 500;
-`
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 5px;
+  font-weight: 500;
+`;
 
 const ButtonSection = ({
   cities,
@@ -20,10 +18,10 @@ const ButtonSection = ({
   return (
     <div>
       <ButtonStyle
-        onClick={() => getCurrentWeather("current")}
+        onClick={() => getCurrentWeather('current')}
         style={{
-          textTransform: "uppercase",
-          background: `${selectedCity}` == null ? "#005995" : "white",
+          textTransform: 'uppercase',
+          background: `${selectedCity}` == null ? '#005995' : 'white',
         }}
       >
         current
@@ -33,9 +31,9 @@ const ButtonSection = ({
         <ButtonStyle
           onClick={() => setCity(item)}
           style={{
-            textTransform: "uppercase",
-            background: `${selectedCity}` == item ? "#005995" : "white",
-            color: `${selectedCity}` == item? "white":"black"
+            textTransform: 'uppercase',
+            background: `${selectedCity}` === item ? '#005995' : 'white',
+            color: `${selectedCity}` === item ? 'white' : 'black',
           }}
           key={index}
         >
