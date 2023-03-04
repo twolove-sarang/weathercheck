@@ -15,30 +15,12 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const geolocationAPI = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      weatherAPI(lat, lon);
-    });
-  };
-
   const weatherAPI = async (lat, lon) => {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
     setLoading(true);
     let response = await fetch(url);
     let data = await response.json();
     console.log('데이터는?', data);
-    setWeather(data);
-    setLoading(false);
-  };
-
-  const getCityApi = async () => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
-    setLoading(true);
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log('데이터는', data);
     setWeather(data);
     setLoading(false);
   };
@@ -54,10 +36,26 @@ function App() {
   const MainSection = styled.div`
     background-color: #f9f9f9;
     padding: 30px;
-    // width: 50%;
   `;
 
   useEffect(() => {
+    const geolocationAPI = () => {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        weatherAPI(lat, lon);
+      });
+    };
+
+    const getCityApi = async () => {
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+      setLoading(true);
+      let response = await fetch(url);
+      let data = await response.json();
+      console.log('데이터는', data);
+      setWeather(data);
+      setLoading(false);
+    };
     if (city === '') {
       geolocationAPI();
     } else {
